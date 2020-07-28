@@ -213,7 +213,7 @@ class Sultan(Base):
 
         except Exception as e:
             result = Result(None, commands, self._context, exception=e)
-            result.dump_exception()
+            # result.dump_exception()
             if halt_on_nonzero:
                 raise e
                 

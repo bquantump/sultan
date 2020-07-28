@@ -21,7 +21,7 @@ class Echo(Base):
 
     def __init__(self, activated=True):
 
-        self.logger = getLogger(name='sultan')
+        self.logger = getLogger(name='pyshell')
         self.activated = activated
 
     def log(self, msg):
