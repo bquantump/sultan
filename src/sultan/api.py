@@ -212,7 +212,6 @@ class Sultan(Base):
             result = Result(process, commands, self._context, streaming, halt_on_nonzero=halt_on_nonzero)
 
         except Exception as e:
-            print("command failed in sultan!")
             result = Result(None, commands, self._context, exception=e)
             if halt_on_nonzero:
                 raise e
