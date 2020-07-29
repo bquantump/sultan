@@ -200,7 +200,6 @@ class Sultan(Base):
         env = self._context[0].get('env', {}) if len(self._context) > 0 else os.environ
         executable = self.current_context.get('executable')
         try:
-            print("running command")
             process = subprocess.Popen(commands,
                                        bufsize=1,
                                        shell=True,

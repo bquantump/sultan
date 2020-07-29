@@ -56,7 +56,8 @@ class Result(Base):
             self.__stderr = stderr.strip().splitlines() if stderr else []
             
             if self._halt_on_nonzero and self.rc != 0:
-                pass
+                print(self.stderr)
+                raise subprocess.CalledProcessError(self.rc, ''.join(self._commands), self.stderr)
                 # self.dump_exception()
 
 
