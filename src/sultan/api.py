@@ -189,7 +189,7 @@ class Sultan(Base):
         self.commands = command.split(' ')
         return self.run(halt_on_nonzero=halt_on_nonzero, quiet=quiet, q=q, streaming=streaming)
 
-    def run(self, halt_on_nonzero=True, quiet=False, q=False, streaming=False):
+    def run(self, halt_on_nonzero=True, quiet=False, q=True, streaming=False):
         """
         After building your commands, call `run()` to have your code executed.
         """
@@ -200,6 +200,7 @@ class Sultan(Base):
         env = self._context[0].get('env', {}) if len(self._context) > 0 else os.environ
         executable = self.current_context.get('executable')
         try:
+            print("running command")
             process = subprocess.Popen(commands,
                                        bufsize=1,
                                        shell=True,
@@ -212,8 +213,8 @@ class Sultan(Base):
             result = Result(process, commands, self._context, streaming, halt_on_nonzero=halt_on_nonzero)
 
         except Exception as e:
+            print("command failed in sultan!")
             result = Result(None, commands, self._context, exception=e)
-            # result.dump_exception()
             if halt_on_nonzero:
                 raise e
                 

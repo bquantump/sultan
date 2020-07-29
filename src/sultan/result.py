@@ -56,7 +56,8 @@ class Result(Base):
             self.__stderr = stderr.strip().splitlines() if stderr else []
             
             if self._halt_on_nonzero and self.rc != 0:
-                self.dump_exception()
+                pass
+                # self.dump_exception()
 
 
     def read_output(self, pipe, q):
